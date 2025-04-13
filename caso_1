@@ -1,4 +1,4 @@
-//casos_1
+//caso_1
 #include <stdio.h>
 
 int main() {
