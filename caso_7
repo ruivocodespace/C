@@ -30,6 +30,9 @@ float total;
                 case 3:
                 case 4:
                 printf("Valor total do plano R$%.2f", total);
+                
+                default:
+                printf("Programa finalizado.");
             }
     return 0;
 }
