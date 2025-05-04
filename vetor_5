@@ -1,0 +1,27 @@
+//vetor_5
+#include <stdio.h>
+
+int main() 
+{   //Variaveis
+    int numero[3][3];
+    int soma[5];
+    int contador, contadorb;
+        //Solicita os elementos dos vetores
+        for(contador = 0; contador < 3; contador++){
+            for(contadorb = 0; contadorb < 3; contadorb++){
+                printf("Insira o %iº numero: ", contadorb + 1);
+                scanf("%i", &numero[contador][contadorb]);
+            }
+        }
+        //Calculo
+        for(contadorb = 0; contadorb < 5; contadorb++){
+           soma[contadorb] = numero[0][contadorb] + numero[1][contadorb];
+        }
+        //Impressao da soma
+        printf("Soma dos elementos:\n");
+        for (contadorb = 0; contadorb < 5; contadorb++) {
+        printf("%i ", soma[contadorb]);
+        }
+        printf("\n");
+    return 0;
+}
