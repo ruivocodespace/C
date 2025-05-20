@@ -1,0 +1,20 @@
+#include <stdio.h>
+
+int main() {
+    char i;  // declaração da variável
+    
+    printf("Deixe-me descobrir o número que você está pensando!\n");
+    printf("O número que você está pensando é 50? (sim/nao)\n");
+    scanf(" %c", &i);
+    
+    if(i == "sim"){
+        printf("O número que você esta pensando é 50!");
+    } else if (i == "nao"){
+        printf("O número é maior do que 50?");
+    } else if (i == "sim"){
+        printf("O número é maior do que 75?");
+    }
+  
+    
+    return 0;
+}
