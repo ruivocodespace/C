@@ -1,0 +1,49 @@
+//adivinhacao
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+    //Variaveis
+    int numMaximo, numMinimo, palpite;
+    int numero, tentativas, resposta;
+    
+    //Iniciar variaveis
+    numMinimo = 0;
+    numMaximo = 100;
+    tentativas = 1;
+        //Inicio do loop
+        while (tentativas < 8) {
+            palpite = (numMaximo + numMinimo) / 2;
+            printf("O numero é %d?\n", palpite);
+            printf("1-Sim\n");
+            printf("2-Não\n");
+            scanf("%d", &resposta);
+            //Se o algoritmo acerta o numero ele imprime:
+            if (resposta == 1) {
+                printf("O número que você pensou é %d\n",palpite);
+                printf("Descoberto em %d tentativa(s).", tentativas);
+                break;
+              //Se não acerta o numero ele pergunta s é maior ou menor  
+            } else {
+                printf("O número é maior ou menor que %d?\n", palpite);
+                printf("1 - Maior\n");
+                printf("2 - Menor\n");
+                scanf("%d", &resposta);
+                    //Se o numero for maior ele soma 1 com o palpite e joga pra dentro do minimo
+                    if(resposta == 1) {
+                        numMinimo = palpite + 1;
+                    } 
+                    //Senao ele subtrai 1 do palpite e joga pra dentro do maximo
+                    else {
+                        numMaximo = palpite - 1;
+                    }
+            }
+            //Contador de tentativas
+            tentativas++;
+        }
+        //Se não encontrar o numero ele imprime:
+        if(resposta >= 8) {
+            printf("Numero não encontrado em 8 tentativas");
+        }
+    return 0;
+}
