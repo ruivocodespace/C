@@ -1,49 +1,66 @@
 //adivinhacao
 #include <stdio.h>
-#include <math.h>
+#include <string.h>
+
+//Função para calcular valor final com desconto
+float calcular_valor_final(float precoTotal, int quantidadeItens) {
+    float desconto = 0;
+
+    if (quantidadeItens > 3) {
+        desconto = precoTotal * 0.05f; // 5% de desconto
+    }
+    
+    return precoTotal - desconto;
+}
 
 int main() {
-    //Variaveis
-    int numMaximo, numMinimo, palpite;
-    int numero, tentativas, resposta;
+    int contador = 1, i;
+    int itemComprado;
+    int quantidadeItens = 0;
+    float precoTotal = 0;
     
-    //Iniciar variaveis
-    numMinimo = 0;
-    numMaximo = 100;
-    tentativas = 1;
-        //Inicio do loop
-        while (tentativas < 8) {
-            palpite = (numMaximo + numMinimo) / 2;
-            printf("O numero é %d?\n", palpite);
-            printf("1-Sim\n");
-            printf("2-Não\n");
-            scanf("%d", &resposta);
-            //Se o algoritmo acerta o numero ele imprime:
-            if (resposta == 1) {
-                printf("O número que você pensou é %d\n",palpite);
-                printf("Descoberto em %d tentativa(s).", tentativas);
-                break;
-              //Se não acerta o numero ele pergunta s é maior ou menor  
-            } else {
-                printf("O número é maior ou menor que %d?\n", palpite);
-                printf("1 - Maior\n");
-                printf("2 - Menor\n");
-                scanf("%d", &resposta);
-                    //Se o numero for maior ele soma 1 com o palpite e joga pra dentro do minimo
-                    if(resposta == 1) {
-                        numMinimo = palpite + 1;
-                    } 
-                    //Senao ele subtrai 1 do palpite e joga pra dentro do maximo
-                    else {
-                        numMaximo = palpite - 1;
-                    }
-            }
-            //Contador de tentativas
-            tentativas++;
+    //Produtos
+    char produtos[5][60] = {
+        "Arroz",
+        "Feijão",
+        "Trakinas",
+        "Café",
+        "Erva Mate"
+    };
+
+    //Preços dos produtos
+    float precos[5] = {9, 8, 5, 25, 12};
+
+    printf("Tabela de itens:\n");
+    for (i = 0; i < 5; i++) {
+        printf("%d - R$ %.2f - %s\n", i + 1, precos[i], produtos[i]);
+    }
+    //Inicio do loop
+    while (1) {
+        printf("Digite o número do item comprado (0 para finalizar): ");
+        scanf("%d", &itemComprado);
+
+        if (itemComprado == 0) {
+            break;
         }
-        //Se não encontrar o numero ele imprime:
-        if(resposta >= 8) {
-            printf("Numero não encontrado em 8 tentativas");
+
+        if (itemComprado < 1 || itemComprado > 5) {
+            printf("Item inválido, tente novamente.\n");
+            continue;
         }
+
+        precoTotal += precos[itemComprado - 1];
+        quantidadeItens++;
+        contador++;
+    }
+    //Chama a funcao para calcular o desconto
+    float precoFinal = calcular_valor_final(precoTotal, quantidadeItens);
+    //Imprime os resultados
+    printf("Preço total: R$ %.2f\n", precoTotal);
+    if (quantidadeItens > 3) {
+        printf("Desconto aplicado!\n");
+    }
+    printf("Preço final a pagar: R$ %.2f\n", precoFinal);
+
     return 0;
 }
