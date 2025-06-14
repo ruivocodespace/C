@@ -1,0 +1,109 @@
+// Online C compiler to run C program online
+#include <stdio.h>
+#include <stdlib.h>
+#include <ctype.h>
+#include <time.h>
+#include <stdbool.h>
+
+
+int numero[21];
+int cont_vetor = 1;
+char opcao;
+long opcao_invalida = false;
+
+void push() {
+    int numero;
+    
+    if (cont_vetor > 20){
+        printf("=== A PILHA ESTÁ CHEIA ===");
+       } else {
+            //aleatorio on
+            srand(time(NULL));
+            scanf("%d", &numero);
+            //aleatorio off
+            numero[cont_vetor] = numero;
+            cont_vetor = cont_vetor + 1;
+        }
+}
+
+void pop(){
+    int posicao;
+    
+    cont_vetor = cont_vetor - 1;
+    posicao = cont_vetor;
+    numero[posicao] = 0;
+}
+
+void limpar(){
+    int numero, posicao;
+    
+    for(int i =1; i <= 20, i++){
+        cont_vetor = cont_vetor - 1;
+        posicao = cont_vetor;
+        numero[posicao] = 0;
+    }
+    cont_vetor = 0
+    printf("=== A PILHA ESTÁ VAZIA! ===\n");
+}
+
+void listar(){
+    int numero, posicao;
+    
+    for(int i = 1; i <= 20; i++){
+        if (numero[i] != 0) {
+            printf(numero[i]);
+        }
+    }
+}
+
+void vazia(){
+    if(cont_vetor > 1){
+        printf("=== A PILHA NÃO ESTÁ VAZIA ===");
+    } else {
+        printf("=== A PILHA ESTÁ VAZIA ===");
+    }
+}
+
+
+int main() {
+    while(opcao_invalida != true) {
+        printf("=========================");
+        printf("a) EMPILHAR\n");
+        printf("b) DESEMPILHAR\n");
+        printf("c) LIMPAR\n");
+        printf("d) LISTAR\n");
+        printf("e) VAZIA\n");
+        printf("=========================");
+        printf("ESCOLHA UMA DAS OPÇÕES: ");
+        
+        while((getchar()) != '\n');
+        scanf("%c", &opcao);
+        opcao = toupper(opcao);
+        
+        system("clear || cls");
+        
+        switch (opcao) {
+        
+        case 'A':
+            push();
+            break;
+        case 'B':
+            pop();
+            break;
+        case 'C':
+            limpar();
+            break;
+        case 'D'
+            listar();
+            break;
+        case 'E':
+            vazia();
+            break;
+        default:
+            opcao_invalida = true;
+            break;
+        }
+    }
+    
+    return 0;
+}
