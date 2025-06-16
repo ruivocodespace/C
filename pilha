@@ -78,9 +78,8 @@ int main() {
         printf("=====================================================\n");
         printf("Escolha uma das opções: ");
 
-        while ((getchar()) != '\n'); 
-        scanf("%c", &opcao);
-        opcao = toupper(opcao); // transforma em maiúsculo
+        scanf(" %c", &opcao); // lê e ignora espaços anteriores
+        opcao = toupper(opcao);
 
         system("clear || cls"); 
 
