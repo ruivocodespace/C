@@ -4,7 +4,7 @@
 #include <stdbool.h>
 #include <time.h>
 
-int numero[21]; // de 1 a 20, então índice 1 a 20
+int numero[21]; 
 int cont_vetor = 1;
 char opcao;
 bool opcao_invalida = false;
@@ -20,7 +20,7 @@ void push() {
             srand(time(NULL));
         }
 
-        num = rand() % 100;  // Gera número aleatório de 0 a 99
+        num = rand() % 100;  
         printf("Número gerado: %d\n", num);
 
         numero[cont_vetor] = num;
@@ -78,11 +78,11 @@ int main() {
         printf("=====================================================\n");
         printf("Escolha uma das opções: ");
 
-        while ((getchar()) != '\n'); // Limpa o buffer
+        while ((getchar()) != '\n'); 
         scanf("%c", &opcao);
         opcao = toupper(opcao); // transforma em maiúsculo
 
-        system("clear || cls"); // limpa a tela (Linux ou Windows)
+        system("clear || cls"); 
 
         switch (opcao) {
             case 'A':
