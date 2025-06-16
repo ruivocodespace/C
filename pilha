@@ -1,8 +1,8 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <ctype.h>
-#include <stdbool.h>
-#include <time.h>
+#include <stdio.h> //para comandos como scanf, printf
+#include <stdlib.h> //para funcoes como srand e time
+#include <ctype.h> //manipulação de caracateres
+#include <stdbool.h> //expressao boolean true or false
+#include <time.h> //time() e srand(time(NULL))
 
 int numero[21]; 
 int cont_vetor = 1;
@@ -78,7 +78,7 @@ int main() {
         printf("=====================================================\n");
         printf("Escolha uma das opções: ");
 
-        scanf(" %c", &opcao); // lê e ignora espaços anteriores
+        scanf(" %c", &opcao); // lê opcao
         opcao = toupper(opcao);
 
         system("clear || cls"); 
