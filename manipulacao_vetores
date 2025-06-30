@@ -1,3 +1,4 @@
+// Online C compiler to run C program online
 #include <stdio.h>
 #include <stdbool.h>
 #include <ctype.h>
@@ -32,15 +33,10 @@ int main() {
                     printf("Limite de números atingido.\n");
                 }
                 break;
-            // busca dentro do veto o numero digitado e imprime a posicao
+            // busca dentro do vetor o numero digitado e imprime a posicao
             case 'B': {
                 int buscado;
                 bool encontrado = false;
-                printf("Números cadastrados:\n");
-                for(int i = 0; i < quantidade; i++) {
-                    printf("%d ", numeros[i]);
-                }
-                printf("\n");
 
                 printf("Digite o número a ser buscado: ");
                 scanf("%d", &buscado);
@@ -108,7 +104,7 @@ int main() {
             // encerra o programa somente se a opção D foi usada
             case 'F':
                 if (listou) {
-                    printf("Saindo do sistema...\n");
+                    printf("Encerrando sistema...\n");
                 } else {
                     printf("Você deve primeiro listar os números com a opção D antes de sair.\n");
                     opcao = 'X'; // opcao diferente das oferecidas para forçar o loop
