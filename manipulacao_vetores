@@ -1,0 +1,125 @@
+#include <stdio.h>
+#include <stdbool.h>
+#include <ctype.h>
+
+int main() {
+    int numeros[5]; // Vetor
+    int quantidade = 0; // Quant vetor
+    char opcao; // Opcao escolhida
+    bool listou = false; // PAra saber se a opção D foi usada
+
+    do {
+        printf("\n=== MENU ===\n");
+        printf("A - Cadastrar um novo número\n");
+        printf("B - Buscar um número\n");
+        printf("C - Excluir um número\n");
+        printf("D - Listar os números cadastrados\n");
+        printf("E - Exibir a soma dos números do vetor\n");
+        printf("F - Sair do Sistema\n");
+        printf("Digite a opção desejada: ");
+        scanf(" %c", &opcao);
+        opcao = toupper(opcao); // Transforma em letra maiúscula
+
+        switch (opcao) {
+            //insere o numero digitado na posicao seguinte do vetor
+            case 'A':
+                if (quantidade < 5) {
+                    printf("Digite o número para cadastrar: ");
+                    scanf("%d", &numeros[quantidade]);
+                    quantidade++;
+                    printf("Número cadastrado com sucesso.\n");
+                } else {
+                    printf("Limite de números atingido.\n");
+                }
+                break;
+            // busca dentro do veto o numero digitado e imprime a posicao
+            case 'B': {
+                int buscado;
+                bool encontrado = false;
+                printf("Números cadastrados:\n");
+                for(int i = 0; i < quantidade; i++) {
+                    printf("%d ", numeros[i]);
+                }
+                printf("\n");
+
+                printf("Digite o número a ser buscado: ");
+                scanf("%d", &buscado);
+
+                for(int i = 0; i < quantidade; i++) {
+                    if (numeros[i] == buscado) {
+                        printf("Número encontrado na posição %d.\n", i);
+                        encontrado = true;
+                        break;
+                    }
+                }
+                if (!encontrado) {
+                    printf("Número não encontrado.\n");
+                }
+                break;
+            }
+            // exclui o numero digitado e a posicao zerada vai para o final do vetor
+            case 'C': {
+                int excluir;
+                bool encontrado = false;
+                printf("Digite o número que deseja excluir: ");
+                scanf("%d", &excluir);
+
+                for(int i = 0; i < quantidade; i++) {
+                    if (numeros[i] == excluir) {
+                        printf("Número encontrado na posição %d e será zerado.\n", i);
+                        // move todos os seguintes uma posição para trás
+                        for(int j = i; j < quantidade - 1; j++) {
+                            numeros[j] = numeros[j + 1];
+                        }
+                        numeros[quantidade - 1] = 0; // último vira zero
+                        printf("Número excluído.\n");
+                        encontrado = true;
+                        break;
+                    }
+                }
+                if (!encontrado) {
+                    printf("Número não encontrado.\n");
+                }
+                break;
+            }
+
+            case 'D':
+            // imprime os valores do vetor, apenas posicoes que tenham valores 
+                if (quantidade == 0) {
+                    printf("Nenhum número cadastrado.\n");
+                } else {
+                    printf("Números cadastrados:\n");
+                    for(int i = 0; i < quantidade; i++) {
+                        printf("%d ", numeros[i]);
+                    }
+                    printf("\n");
+                }
+                listou = true; // grava que a opção D foi usada
+                break;
+            // imprime na tela a soma dos valores cadastrados no vetor
+            case 'E': {
+                int soma = 0;
+                for(int i = 0; i < quantidade; i++) {
+                    soma += numeros[i];
+                }
+                printf("Soma dos números cadastrados: %d\n", soma);
+                break;
+            }
+            // encerra o programa somente se a opção D foi usada
+            case 'F':
+                if (listou) {
+                    printf("Saindo do sistema...\n");
+                } else {
+                    printf("Você deve primeiro listar os números com a opção D antes de sair.\n");
+                    opcao = 'X'; // opcao diferente das oferecidas para forçar o loop
+                }
+                break;
+
+            default:
+                printf("Opção inválida. Escolha novamente.\n");
+        }
+
+    } while(opcao != 'F' || !listou);
+
+    return 0;
+}
