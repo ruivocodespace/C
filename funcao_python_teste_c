@@ -1,0 +1,13 @@
+// Online C compiler to run C program online
+#include <stdio.h>
+    float soma2(float a, float b){
+        return (a + b);
+}
+
+int main(){
+
+float resul = soma2(1, 2);
+
+    printf("Hello world %f, %f, %f, %f!",resul + 1, resul, resul, resul);
+    return 0;
+}
